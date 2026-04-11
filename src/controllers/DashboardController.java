@@ -38,6 +38,7 @@ public class DashboardController {
 
     private void loadUserAccounts() {
     	try {
+    		
 	        List<Account> accounts =bankService.getAccountsByUserId(SessionManager.getLoggedInUserId());
 	        cmbAccounts.getItems().clear();
 	        cmbAccounts.getItems().addAll(accounts);
@@ -49,10 +50,6 @@ public class DashboardController {
 	            lblBalance.setText("No account found");
 	            lblMessage.setText("Please open a new account");
 	        }
-    	}
-    	catch(ServiceLayerException e) {
-    		lblMessage.setText(e.getMessage());
-    		e.printStackTrace();
     	}
     	catch(Exception e) {
     		lblMessage.setText("Something Went Wrong");
